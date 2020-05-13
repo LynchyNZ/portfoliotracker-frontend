@@ -1,32 +1,47 @@
 ## Portfolio Tracker Frontend
 
+This is the frontend project for a Portfolio Tracker app, used alongside [Portfolio Tracker Backend](https://github.com/LynchyNZ/portfoliotracker-backend)
+
 ### Project Links
 
+- [GitHub Frontend](https://github.com/LynchyNZ/portfoliotracker-frontend)
+- [GitHub Backend](https://github.com/LynchyNZ/portfoliotracker-backend)
 - [Slack](https://lynchyworkspace.slack.com/)
 - [Confluence](https://lynchy.atlassian.net/wiki/spaces/PT/overview/)
 - [JIRA](https://lynchy.atlassian.net/browse/PT)
 - [Support](https://lynchy.atlassian.net/servicedesk)
 - [Status page](https://lynchy.statuspage.io/)
 
-### Prerequisites for local development
+### Project Stack
 
-- Node, npm/Yarn, Git, IDE (VS Code recommended)
-
-### Stack
-
-- React
-- Apollo Client
-- TypeScript
-- D3.js
-
-### Tools
-
+- React (with TypeScript)
+- GraphQL
+- Postgraphile
 - Docker
-- Circle CI
 
-### Docker
+### Setup Local Environment
 
-You can run the front-end in a Docker container using the following commands:
+1) Clone Repos:
+- `git clone https://github.com/LynchyNZ/portfoliotracker-frontend.git`
+- `git clone https://github.com/LynchyNZ/portfoliotracker-backend`
+
+2) Get updated copy of files where sensitive info has been removed (keys, DB credentials and schemas)
+- (message Lynchy on [Slack](https://lynchyworkspace.slack.com/))
+
+3) Install Docker
+
+4) Run the following to build Docker containers for frontend (Dev) and backend:
+`docker-compose up -d` (in portfolio-backend folder)
+`docker-compose -f docker-compose.dev.yml up -d --build` (in portfoliotracker-frontend folder)
+
+5) View app at
+[http://localhost:3001/](http://localhost:3001/)
+and the graphiQL tool at
+  [http://localhost:5433/graphiql](http://localhost:5433/graphiql)
+
+### Frontend-specific Docker instructions
+
+You can run the React app in a Docker container using the following commands:
 
 - `docker-compose -f docker-compose.dev.yml up -d --build`
 
@@ -40,7 +55,7 @@ You can run the front-end in a Docker container using the following commands:
 
   Open [http://localhost:1337/](http://localhost:1337/) to view it in the browser
 
-### Commands
+### Non-Docker Local Environment (node required)
 
 - `npm start`
 
