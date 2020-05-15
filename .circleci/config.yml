@@ -1,9 +1,23 @@
 version: 2.1
+
 orbs:
   node: circleci/node@1.1.6
   slack: circleci/slack@3.4.2
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+
 jobs:
-  build-and-test:
+  build:
     executor:
       name: node/default
     steps:
@@ -12,7 +26,9 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+  deploy:
+    docker:
+      - image: circleci/node:7.10
+    steps:
+      - checkout
+      - run: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER@$DROPLET_IP "./deploy_project.sh"
