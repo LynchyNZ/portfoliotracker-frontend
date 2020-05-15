@@ -12,7 +12,7 @@ import { API_URL, AUTH_TOKEN } from 'helpers/constants';
 import 'index.css';
 
 const httpLink = createHttpLink({
-  uri: `http://${API_URL}`,
+  uri: `${API_URL}`,
 });
 
 const authLink = setContext((_, { headers }) => {
