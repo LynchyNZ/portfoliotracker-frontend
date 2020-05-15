@@ -42,7 +42,7 @@ class Login extends React.Component<RouteComponentProps<any>> {
       <div>
         <h4 className="mv3">{login ? 'Login' : 'Sign Up'}</h4>
         <h5>{message}</h5>
-        <h5>TEST YO</h5>
+        <h5>TEST HANNAH</h5>
         <div className="flex flex-column">
           {!login && (
             <input
