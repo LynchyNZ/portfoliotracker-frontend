@@ -19,7 +19,7 @@ import { lastVisibleItemBasedZoomAnchor } from 'react-financial-charts/lib/utils
 import { withSize } from 'utils';
 import fetchStockData, { IOHLCData } from 'services/fetchStockData';
 
-interface StockChartProps {
+interface Props {
   readonly data: IOHLCData[];
   readonly height: number;
   readonly dateTimeFormat?: string;
@@ -28,7 +28,7 @@ interface StockChartProps {
   readonly stock: string;
 }
 
-class StockChart extends React.Component<StockChartProps> {
+class StockChart extends React.Component<Props> {
   private readonly margin = { left: 0, right: 48, top: 0, bottom: 24 };
   private readonly pricesDisplayFormat = format('.2f');
   private readonly xScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor((d: IOHLCData) => d.date);

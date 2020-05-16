@@ -1,19 +1,16 @@
 import React from 'react';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
+import { userService } from 'services/userService';
 
 export interface ProtectedRouteProps extends RouteProps {
-  isAuthenticated: boolean;
   authenticationPath: string;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = (props) => {
-  let redirectPath = '';
-  if (!props.isAuthenticated) {
-    redirectPath = props.authenticationPath;
-  }
+  const authenticated = userService.loggedInUser;
 
-  if (redirectPath) {
-    const renderComponent = () => <Redirect to={{ pathname: redirectPath }} />;
+  if (!authenticated) {
+    const renderComponent = () => <Redirect to={{ pathname: props.authenticationPath }} />;
     return <Route {...props} component={renderComponent} />;
   } else {
     return <Route {...props} />;

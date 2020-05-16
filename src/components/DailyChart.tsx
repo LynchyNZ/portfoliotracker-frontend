@@ -3,9 +3,9 @@ import { Grid, Header, Input, Label, Container, Button, Divider } from 'semantic
 import StockCharts from 'components/StockChart';
 import { StockContext } from 'context/StockContext';
 
-type DailyChartProps = {};
+type Props = {};
 
-const DailyChart: React.FC<DailyChartProps> = () => {
+const DailyChart: React.FC<Props> = () => {
   return (
     <StockContext.Consumer>
       {({ stock, setStock, userInputStock, setUserInputStock }) => (

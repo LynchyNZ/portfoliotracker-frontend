@@ -2,11 +2,11 @@ import React from 'react';
 import { Container, Image, List, Menu, Segment, Grid } from 'semantic-ui-react';
 import WalletLogo from 'assets/images/wallet-logo.svg';
 
-type MainLayoutProps = {
+type Props = {
   children: any;
 };
 
-const MainLayout: React.FC<MainLayoutProps> = (props) => {
+const MainLayout: React.FC<Props> = (props) => {
   return (
     <React.Fragment>
       <Grid textAlign="center" style={{ height: '5rem' }} verticalAlign="middle" padded>

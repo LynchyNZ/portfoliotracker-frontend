@@ -8,7 +8,8 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { setContext } from 'apollo-link-context';
-import { API_URL, AUTH_TOKEN } from 'helpers/constants';
+import { API_URL } from 'helpers/constants';
+import { userService } from 'services/userService';
 import 'index.css';
 
 const httpLink = createHttpLink({
@@ -16,12 +17,12 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem(AUTH_TOKEN);
-  if (token) {
+  const currentUser = userService.loggedInUser;
+  if (currentUser) {
     return {
       headers: {
         ...headers,
-        authorization: token ? `Bearer ${token}` : '',
+        authorization: currentUser ? `Bearer ${currentUser.authToken}` : '',
       },
     };
   } else {
