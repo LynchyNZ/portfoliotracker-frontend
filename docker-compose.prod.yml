@@ -5,6 +5,7 @@ services:
     container_name: portfoliotracker-frontend-prod
     build:
       context: .
+      network: host
       dockerfile: Dockerfile.prod
     ports:
       - '80:80'
