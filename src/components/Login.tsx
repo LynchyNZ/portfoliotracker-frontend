@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AUTH_TOKEN } from 'helpers/constants';
 import { Mutation } from 'react-apollo';
+import { userService } from 'services/userService';
 import gql from 'graphql-tag';
 
 const REGISTER_MUTATION = gql`
@@ -35,14 +35,14 @@ const Login: React.FC<Props> = () => {
   const [password, setPassword] = useState<string>('');
   const [message, setMessage] = useState<string>('');
 
-  let history = useHistory();
+  const history = useHistory();
 
   async function onConfirm(data: any) {
     if (login) {
       const { jwtToken } = data.authenticate;
       if (jwtToken) {
-        saveUserData(jwtToken);
-        history.push(`/dashboard`);
+        await userService.login(jwtToken);
+        history.push('/dashboard');
       } else {
         onError('Login failed');
       }
@@ -61,9 +61,11 @@ const Login: React.FC<Props> = () => {
     }
   }
 
-  async function saveUserData(token: any) {
-    localStorage.setItem(AUTH_TOKEN, token);
-  }
+  useEffect(() => {
+    if (userService.loggedInUser) {
+      history.push('/dashboard');
+    }
+  }, [history]);
 
   return (
     <div>
