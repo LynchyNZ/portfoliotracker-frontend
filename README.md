@@ -55,6 +55,11 @@ You can run the React app in a Docker container:
   Builds the frontend in production mode (npm run build with an nginx server)
   Open [http://localhost:1337/](http://localhost:1337/) to view it in the browser
 
+
+You can specify which server your local frontend uses by setting `REACT_APP_SERVER_URL` in the .env file
+  - Local server (if you have one running): `http://localhost:5433/graphql`
+  - Development server: `http://64.225.40.49:5433/graphql`
+
 ### Non-Docker Local Environment (node required)
 
 - `npm start`
