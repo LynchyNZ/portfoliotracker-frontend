@@ -1,14 +1,14 @@
 import React, { lazy, Suspense } from 'react';
-const Login = lazy(() => import('components/Login'));
+const DailyChart = lazy(() => import('components/DailyChart'));
 
 type Props = {};
 
 const Dashboard: React.FC<Props> = () => {
   return (
     <React.Fragment>
-      <h2>Login</h2>
+      <h2>Dashboard</h2>
       <Suspense fallback={<div>Loading...</div>}>
-        <Login />
+        <DailyChart />
       </Suspense>
     </React.Fragment>
   );
