@@ -23,7 +23,7 @@ This is the frontend project for a Portfolio Tracker app, used alongside [Portfo
 
 1) Clone Repos:
 - `git clone https://github.com/LynchyNZ/portfoliotracker-frontend.git`
-- `git clone https://github.com/LynchyNZ/portfoliotracker-backend`
+- `git clone https://github.com/LynchyNZ/portfoliotracker-backend.git`
 
 2) Get updated copy of files where sensitive info has been removed (keys, DB credentials and schemas)
 - (message Lynchy on [Slack](https://lynchyworkspace.slack.com/))
@@ -41,9 +41,10 @@ and the graphiQL tool at
 
 ### Frontend-specific Docker instructions
 
-You can run the React app in a Docker container using the following commands:
+You can run the React app in a Docker container:
 
-- `docker-compose -f docker-compose.dev.yml up -d --build`
+- Dev:
+  `docker-compose -f docker-compose.dev.yml up -d --build`
 
   Builds the frontend in development mode (npm start)<br>
   Open [http://localhost:3001/](http://localhost:3001/) to view it in the browser
@@ -52,7 +53,6 @@ You can run the React app in a Docker container using the following commands:
   `docker-compose -f docker-compose.prod.yml up -d --build`
 
   Builds the frontend in production mode (npm run build with an nginx server)
-
   Open [http://localhost:1337/](http://localhost:1337/) to view it in the browser
 
 ### Non-Docker Local Environment (node required)
