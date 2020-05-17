@@ -2,10 +2,9 @@ version: '3.7'
 
 services:
   frontend-prod:
-    container_name: portfoliotracker-frontend-prod
+    container_name: frontend-prod
     build:
       context: .
-      network: host
       dockerfile: Dockerfile.prod
     ports:
-      - '1337:1337'
+      - 1337:1337
