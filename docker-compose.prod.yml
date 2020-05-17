@@ -8,4 +8,4 @@ services:
       network: host
       dockerfile: Dockerfile.prod
     ports:
-      - '80:80'
+      - '1337:1337'
